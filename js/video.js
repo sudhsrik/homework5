@@ -1,7 +1,8 @@
 // Add js here.
 var vid = document.getElementById("videoplayer");
 window.addEventListener("load", (event) => {
-    vid.autoplay =true;
+    vid.autoplay = false;
+    vid.removeAttribute("loop");
 });
 
 document.getElementById("play").addEventListener("click", (event) => {
@@ -50,17 +51,19 @@ muteButton.addEventListener('click', (event) => {
     if (vid.muted == true)
     {
         vid.muted = false;
-        muteButton.innerHTML = '<button id="mute"> Mute </button>';
+        muteButton.innerHTML = 'Mute';
     }
     else
     {
         vid.muted = true;
-        muteButton.innerHTML = '<button id="mute"> Unmute </button>';
+        muteButton.innerHTML = 'Unmute';
     }
 });
 
 var volumeButton = document.getElementById("slider");
+var volumeDisplay = document.getElementById("volume");
 
 volumeButton.addEventListener('change', (event) => {
     vid.volume = volumeButton.value / 100;
+    volumeDisplay.innerHTML = volumeButton.value;
 });
